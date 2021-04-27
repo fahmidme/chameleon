@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+# Chameleon Frontend Test
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To run the project, download this repository, install the node modules, and run `yarn start`.
 
-## Available Scripts
+## Question Answers
 
-In the project directory, you can run:
+### How are you today? 😊
 
-### `yarn start`
+I am doing good. Thank you for asking.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 1. Please fix any obvious issues you see with the dropdown.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. I was wielding my coding magic wand trying to calm a storm, and then realized the problem with the `constructor` bug was only that the spelling was wrong.
 
-### `yarn test`
+2. For this dropdown to be used in any practical setting, `export default ExampleNav` had to be stated.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. The render function for the `DropdownItem` class had to have a return statement.
 
-### `yarn build`
+4. For the `toggle` function to work properly, it had to be binded to the class.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+5. The dropdown item children had to have a conditional statement to make sure it is only shown when it is open.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+6. The toggle function had to set the new value based on negation of the old value.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 4. If we wanted to sync this dropdown selection to the server with app.sync('PATCH', 'user', { dropdown_1_state: {true,false} }) where would this be included?
 
-### `yarn eject`
+It depends. We can put it inside the toggle function. Making it asynchronous should be considered, as it will keep the user experience seamless.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### 5. If we wanted to pass children (like this example) OR a Promise that resolves to an array of items what changes should be made? (just a sentence or two or some code is ok).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This also depends, especially on the use case of the children. Any references to the props should be addressed using `this.props...`. In the case of accessing the label for example, it can be done in parts of the code using `this.props.label`. In the case of an array resulting from a Promise, where the array must be accessible as soon as possible, we can store the result of the Promise in the state. This is not ideal because this may give scaling issues. Always resolving the Promise when it is needed will ensure consistency across all systems.
