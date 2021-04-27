@@ -1,3 +1,5 @@
+![](https://media.giphy.com/media/4VboQRsyOWGYPlrGEk/giphy.gif)
+
 # Chameleon Frontend Test
 
 To run the project, download this repository, install the node modules, and run `yarn start`.
